@@ -10,9 +10,19 @@ class NewsFeedScreen extends StatelessWidget {
     return ListView(
       children: const [
         NewsFeedCard(
+          userName: 'Jonabie Piodo',
+          postContent:
+              'Lab Activity 1 done! Newsfeed with images and reactions.',
+          numOfLikes: 87,
+          hasImage: true,
+          imagePath: 'assets/images/post2.jpg',
+          profileImagePath: 'assets/images/dp.jpg',
+          date: 'November 24',
+        ),
+        NewsFeedCard(
           userName: 'Taylor Swift',
           postContent:
-              'Hello! pwede pahingi lud, si Ariana Grande to, oo. Naki post lang ako kay mareng Taylor, thxx',
+              'Hello beh! pwede pahingi lud, si Ariana Grande to, oo. Naki post lang ako kay mareng Taylor, thxx',
           numOfLikes: 196,
           date: 'November 20',
           profileImagePath: 'assets/images/profile1.jpg',

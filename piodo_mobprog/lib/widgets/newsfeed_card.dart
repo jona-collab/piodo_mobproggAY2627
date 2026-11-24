@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../constants.dart';
 import 'custom_text.dart';
+import 'post_action_button.dart';
+import 'comment_input.dart';
+import 'reactions_row.dart';
 
 class NewsFeedCard extends StatelessWidget {
   final String userName;
@@ -112,82 +114,26 @@ class NewsFeedCard extends StatelessWidget {
 
             SizedBox(height: 12.h),
 
-            // Like Count
+            ReactionsRow(count: numOfLikes),
+
+            const Divider(),
+
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(Icons.thumb_up, color: FB_PRIMARY, size: 17.sp),
-                SizedBox(width: 6.w),
-                CustomText(
-                  text: numOfLikes.toString(),
-                  fontSize: 13.sp,
-                  color: FB_DARK_PRIMARY,
+                PostActionButton(
+                  icon: Icons.thumb_up,
+                  label: 'Like',
+                  onPressed: () => debugPrint('Liked'),
                 ),
+                const PostActionButton(icon: Icons.comment, label: 'Comment'),
+                const PostActionButton(icon: Icons.redo, label: 'Share'),
               ],
             ),
 
-            Divider(height: 20.h),
+            SizedBox(height: 5.h),
 
-            // Like, Comment, Share Buttons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                TextButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.thumb_up_outlined, color: FB_DARK_PRIMARY),
-                  label: const Text(
-                    'Like',
-                    style: TextStyle(color: Colors.black87),
-                  ),
-                ),
-                TextButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.comment_outlined, color: FB_DARK_PRIMARY),
-                  label: const Text(
-                    'Comment',
-                    style: TextStyle(color: Colors.black87),
-                  ),
-                ),
-                TextButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.share_outlined, color: FB_DARK_PRIMARY),
-                  label: const Text(
-                    'Share',
-                    style: TextStyle(color: Colors.black87),
-                  ),
-                ),
-              ],
-            ),
-
-            Divider(height: 15.h),
-
-            // Comment Input
-            Row(
-              children: [
-                CircleAvatar(
-                  radius: 15.r,
-                  backgroundColor: Colors.grey.shade200,
-                  backgroundImage: const AssetImage('assets/images/dp.jpg'),
-                ),
-                SizedBox(width: 10.w),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 12.w,
-                      vertical: 10.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(20.r),
-                    ),
-                    child: CustomText(
-                      text: 'Write a comment...',
-                      fontSize: 12.sp,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            const CommentInput(avatarPath: 'assets/images/dp.jpg'),
 
             SizedBox(height: 10.h),
 
